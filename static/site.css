@@ -1,0 +1,46 @@
+a {
+  text-decoration: none;
+}
+
+.collapsible {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size 15px;
+}
+
+/* .active is controlled with JS */
+.active, .collapsible:hover {
+  background-color: #ccc;
+}
+
+/* hidden by default */
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background: #f1f1f1;
+}
+
+.collapsible:after {
+  content: '\FF0B'; /* plus sign */
+  font-size: 13px;
+  color: white;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+ /* content: "\2796"; /* minus sign */
+ content: "\FF0D";
+}
+
+.episode:before {
+  content: '\25B6';
+  margin-right: 5px;
+}

@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1><a href="{{ url_for('index') }}">Home</a></h1>
+<h1>{{ podcast.name }}</h1>
+<h2>{{ podcast.url }}</h1>
+
+{% if data %}
+<button class="collapsible">Show Info</button>
+<div class="content">
+  <table>
+  {% for key in data %}
+  <tr><td>{{ key }}</td><td>{{ data[key] }}</td></tr>
+  {% endfor %}
+  </table>
+</div>
+
+<br>&nbsp;
+
+{% for episode in edata %}
+<button class="collapsible">{{ episode.title }} - <i>{{ episode.subtitle|truncate(100, False)}}</i></button>
+<div class="content">
+  <table>
+  {% for key in episode %}
+  <tr><td>{{ key }}</td><td>{{ episode[key] }}</td></tr>
+  {% endfor %}
+  </table>
+</div>
+{% endfor %}
+
+{% else %}
+  <h2>Updating feed data ...</h2>
+{% endif %}
+
+<p><a href="{{ url_for('update', show=podcast.id) }}">update</a></p>
+
+<script type="text/javascript">
+var coll = document.getElementsByClassName("collapsible");
+var i;
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+</script>
+
+{% endblock %}
+

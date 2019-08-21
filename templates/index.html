@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Shows</h1>
+
+<ul>
+{% for podcast in podcasts %}
+  <li>
+    [<a href="{{ url_for('delete_show', show=podcast.id) }}">x</a>]
+    <a href="{{ url_for('show', show=podcast.id) }}">
+      {{ podcast.name }}
+    </a>
+  </li>
+{% endfor %}
+</ul>
+
+<h1>Add A New Show</h1>
+<form action="{{ url_for('new_show') }}" method="post">
+  name: <input type="text" name="name"><br>
+  url: <input type="text" name="url">
+       <input type="submit">
+</form>
+{% endblock %}
